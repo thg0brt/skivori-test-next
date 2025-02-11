@@ -15,7 +15,6 @@ export default function games({searchGame}){
             response = await fetch("https://skivori-test-nest.onrender.com/games/get-games");
         }
         const json = await response.json();
-        console.log(json);
         setDataJson(json);
     }
 
@@ -29,7 +28,7 @@ export default function games({searchGame}){
     const imgStyle2 = imgStyle + " border-8";
 
     return (
-        <div className="w-full lg:w-3/5 h-90 grid grid-cols-2 sm:grid-cols-4 gap-x-4 gap-y-10 md:gap-x-4 md:gap-y-10">
+        <div className="w-full lg:w-3/5 h-60 grid grid-cols-2 sm:grid-cols-4 gap-x-4 gap-y-10 md:gap-x-4 md:gap-y-10">
             {dataJson 
             ? dataJson.map((data) => (
                 <div key={data.id}>

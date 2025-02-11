@@ -1,12 +1,9 @@
 "use client";
 
-import { useEffect } from "react";
-
 export default function searchBar({search, setSearch})  {
 
     function changeSeach(e){
         const val = e.target.value;
-        // console.log(val);
         setSearch(val);
     }
 

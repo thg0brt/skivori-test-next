@@ -12,7 +12,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Play casino games",
+  title: "Play Games",
   description: "Build by Thiago Brito",
 };
 
