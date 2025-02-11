@@ -17,8 +17,8 @@ export default function Home() {
   }, [search]);
 
   return (
-    <div className="grid grid-rows-[40px_160px_360px_0px] items-center justify-items-center gap-4 p-4 font-[family-name:var(--font-geist-sans)]">
-      <MenuBar coins={coins} homeButton={homeButton}/>
+    <div className="grid grid-rows-[30px_360px_0px_340px] lg:grid-rows-[30px_550px_0px_370px] items-center justify-items-center gap-4 p-4 font-[family-name:var(--font-geist-sans)]">
+      <MenuBar coins={coins} homeButton={homeButton} />
       <GameBanner />
       <SearchBar search={search} setSearch={setSearch} />
       <Games searchGame={search} />

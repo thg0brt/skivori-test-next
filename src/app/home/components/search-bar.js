@@ -8,7 +8,7 @@ export default function searchBar({search, setSearch})  {
     }
 
     return (
-        <div className="w-full lg:w-3/5 h-10">
+        <div className="w-full lg:w-3/5 h-5">
             <input
                 value        = {search}
                 onChange     = {changeSeach}

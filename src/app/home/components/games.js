@@ -44,6 +44,7 @@ export default function games({searchGame}){
                         {
                             data.thumb 
                             ? <img 
+                                id     = "gameIcon"
                                 className = {imgStyle} 
                                 key       = {data.id} 
                                 src       = {"https:"+data.thumb.url} 
@@ -51,6 +52,7 @@ export default function games({searchGame}){
                                 height    = {200} 
                                 alt       = {data.title} />
                             : <Image 
+                                id     = "gameIcon"
                                 className = {imgStyle2}  
                                 key       = {data.id} 
                                 src       = {imgNotFound} 

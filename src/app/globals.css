@@ -20,7 +20,11 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-img {
+#gameIcon {
   max-width: 100% !important;
   height: 200 !important;
+}
+
+#banner {
+  max-width: 100% !important;
 }
