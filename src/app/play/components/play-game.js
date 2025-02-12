@@ -15,7 +15,9 @@ export default function playGame({coins, setCoins}){
     const middleRow = "middleRow";
 
     const play = async () => {
-        const response = await fetch("https://skivori-test-nest.onrender.com/games/play");
+        const response = await fetch("https://skivori-test-nest.onrender.com/games/play", {
+            method: 'POST'
+        });
         const data = await response.json();
         setJson(data);
     }
