@@ -64,7 +64,7 @@ export default function games({searchGame}){
                     </div>
                 </div>
             ))
-            : <h1>Loading game list</h1>
+            :  <h1 className="text-center text-2xl font-bold">Loading game list</h1>
             }
         </div>
     );

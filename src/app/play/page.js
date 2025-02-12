@@ -1,10 +1,20 @@
+"use client";
+
 import MenuBar from "../menu-bar";
+import PlayGame from "./components/play-game.js"
+import GameRules from "./components/game-rules";
+
+import { useState } from "react";
 
 export default function Play() {
+
+  const [coins, setCoins] = useState(20);
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <MenuBar />
-      <h1>Play page</h1>
+    <div className="grid grid-rows-[30px_450px_580px] lg:grid-rows-[30px_450px_540px] items-center justify-items-center gap-4 p-4 font-[family-name:var(--font-geist-sans)]">
+      <MenuBar coins={coins} homeButton={true} />
+      <PlayGame coins={coins} setCoins={setCoins} />
+      <GameRules />
     </div>
   );
 }

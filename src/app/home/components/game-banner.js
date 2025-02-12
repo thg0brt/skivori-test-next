@@ -13,7 +13,7 @@ export default function gameBanner() {
         <div className="w-full lg:w-3/5 h-30">
             <div>
                 <Image 
-                    id     = "banner"
+                    id        = "banner"
                     className = "w-full rounded-xl lg:h-96"  
                     key       = "gamebannerid" 
                     src       = {GameBanner} 
@@ -29,7 +29,7 @@ export default function gameBanner() {
                     type         = "button"
                     onClick      = {changeRoute}
                     placeholder  = "Play now!"
-                    className    = "w-24 h-10 rounded-xl text-center bg-red-800 bottom-8 left-8">
+                    className    = "w-24 h-10 rounded-xl text-center bg-red-800 bottom-8 left-8 cursor-pointer">
                 </input>
             </div>
         </div>
