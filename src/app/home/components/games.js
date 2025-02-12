@@ -14,7 +14,12 @@ export default function games({searchGame}){
         }else{
             response = await fetch("https://skivori-test-nest.onrender.com/games/get-games");
         }
-        const json = await response.json();
+
+        let json = null
+        if(response.ok){
+            json = await response.json();
+        }
+        
         setDataJson(json);
     }
 
