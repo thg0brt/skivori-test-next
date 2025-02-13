@@ -6,14 +6,16 @@ import 'react-toastify/dist/ReactToastify.css';
 
 export default function playGame({coins, setCoins}){
 
-    const [spin, setSpin] = useState(false); //defines whether the user spun the machine slot or not 
+    //UseState for the game control variables.
+    const [spin, setSpin] = useState(false); //defines whether the user spun the slot machine or not 
     const [json, setJson] = useState(null);
-    const [mainRow, setMainRow] = useState({ 0 : "lemon", 1 : "lemon", 2 : "apple" });
+    const [mainRow, setMainRow] = useState({ 0 : "lemon", 1 : "lemon", 2 : "apple" }); //set a default mainRow.
 
     //default styles
     const rowStyle  = "grid grid-rows-3 items-center justify-items-center ReelRow";
     const middleRow = "middleRow";
 
+    //POST request to the back-end Play REST API endpoint.
     const play = async () => {
         const response = await fetch("https://skivori-test-nest.onrender.com/games/play", {
             method: 'POST'
@@ -22,8 +24,10 @@ export default function playGame({coins, setCoins}){
         setJson(data);
     }
 
+    //UseEffect to call the Play request when the user spin the the slot machine props changes.
     useEffect(() => {
         if(spin){
+            //Set a timeout of 3 seconds, then call the play method.
             setTimeout(() => {
                 play();
 
@@ -33,7 +37,7 @@ export default function playGame({coins, setCoins}){
         } 
     }, [spin]);
 
-
+    //useEffect to update the new balance and mainRow icons when the json changes.
     useEffect(() => {
         if(json != null){
             setMainRow(json[1]);
@@ -57,7 +61,7 @@ export default function playGame({coins, setCoins}){
         }
     }, [json]);
 
-    //OnClick action
+    //OnClick action to triggers the play request.
     function handleClick(){
         if(coins == 0){
             toast.error("Sorry, you don't have enought coins to spin the slot machine!");

@@ -3,8 +3,10 @@ import { useState, useEffect } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+//Menu-bar of the web-site, it its rendered by all routes.
 export default function menuBar({coins, homeButton}) {
 
+    //Configuration for the Convert Balance functionality
     const apiKey = "cb2de2d399468cc6b721fa53";
     const [convertActive, setConvertActive] = useState(false);
     const [json, setJson] = useState(null);
@@ -14,12 +16,14 @@ export default function menuBar({coins, homeButton}) {
         redirect("/home");
     }
 
+    //Request to the ExchangeRate API endpoint.
     const exchangeRate = async () => {
         const response = await fetch("https://v6.exchangerate-api.com/v6/"+apiKey+"/pair/EUR/BRL/"+coins);
         const data = await response.json();
         setJson(data);
     }
 
+    //useEffect to monitor changes in json useState and display a message when json is not null.
     useEffect(() => {
         if(json != null){
             const conversion_result = json.conversion_result;
@@ -32,15 +36,15 @@ export default function menuBar({coins, homeButton}) {
         }
     }, [json]);
     
+    //useEffect to monitor changes in the convertActive useState, to trigger the request to the ExchangeRate API.
     useEffect(() => {
         if(convertActive){
             exchangeRate();
-
             setConvertActive(false);
         } 
     }, [convertActive]);
 
-
+    // Toggles the convertActive state when called onClick.
     function handleConvert(){
         if(!convertActive){
             setConvertActive(true);

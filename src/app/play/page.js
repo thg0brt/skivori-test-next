@@ -6,8 +6,10 @@ import GameRules from "./components/game-rules";
 
 import { useState } from "react";
 
+//Route for the play page.
 export default function Play() {
 
+  //UseState for the coins variable
   const [coins, setCoins] = useState(20);
 
   return (

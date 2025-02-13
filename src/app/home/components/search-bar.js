@@ -2,6 +2,7 @@
 
 export default function searchBar({search, setSearch})  {
 
+    //Set new value to the search state variable when the game-bar input changes.
     function changeSeach(e){
         const val = e.target.value;
         setSearch(val);

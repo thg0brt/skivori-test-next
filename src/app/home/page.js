@@ -7,9 +7,13 @@ import Games from "./components/games.js"
 
 import { useEffect, useState } from "react";
 
+//Route for the homepage.
 export default function Home() {
+
+  //UseState for the search-bar and games.
   const [search, setSearch] = useState("");
 
+  //UseEffect to monitor and refresh the game-list (Games)
   useEffect(() => {
   }, [search]);
 
