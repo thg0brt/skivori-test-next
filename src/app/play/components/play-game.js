@@ -46,11 +46,38 @@ export default function playGame({coins, setCoins}){
 
             //defines the toast mensage
             if(result < 0){
-                toast.error("Bad luck! You lost 1 coin.");
+                toast.error("Bad luck! You lost 1 coin.", {
+                    position: "bottom-center",
+                    autoClose: 3000,
+                    hideProgressBar: false,
+                    closeOnClick: false,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                    });
             } else if (result < 15){
-                toast.success("Great! You earned "+result+" coins.");
+                toast.success("Great! You won "+result+" coins.", {
+                    position: "bottom-center",
+                    autoClose: 3000,
+                    hideProgressBar: false,
+                    closeOnClick: false,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                    });
             } else if (result >= 15){
-                toast.success("Big win! You earned "+result+" coins.");
+                toast.success("Big win! You won "+result+" coins.", {
+                    position: "bottom-center",
+                    autoClose: 3000,
+                    hideProgressBar: false,
+                    closeOnClick: false,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                    });
             }
 
             const currentCoins = coins;
@@ -64,7 +91,16 @@ export default function playGame({coins, setCoins}){
     //OnClick action to triggers the play request.
     function handleClick(){
         if(coins == 0){
-            toast.error("Sorry, you don't have enought coins to spin the slot machine!");
+            toast.error("Sorry, you don't have enought coins to spin the slot machine!", {
+                position: "bottom-center",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: false,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                });
             return;
         }
         if(spin === false){
@@ -121,18 +157,6 @@ export default function playGame({coins, setCoins}){
                     placeholder  = {!spin ? "Spin!" : ""}
                     className    = "w-60 h-20 rounded-xl text-4xl text-center bg-red-800 bottom-8 left-8 cursor-pointer">
                 </input>
-                <ToastContainer
-                    position="bottom-center"
-                    autoClose={3000}
-                    hideProgressBar={false}
-                    newestOnTop={false}
-                    closeOnClick={false}
-                    rtl={false}
-                    pauseOnFocusLoss
-                    draggable
-                    pauseOnHover
-                    theme="light"
-                />
             </div>
         </div>
     )
