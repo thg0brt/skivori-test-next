@@ -13,7 +13,7 @@ export default function Play() {
   const [coins, setCoins] = useState<number>(20);
 
   return (
-    <div className="grid grid-rows-[30px_450px_580px] lg:grid-rows-[30px_450px_540px] items-center justify-items-center gap-4 p-4 font-[family-name:var(--font-geist-sans)]">
+    <div className="grid grid-rows-[30px_450px_350px] lg:grid-rows-[30px_450px_340px] items-center justify-items-center gap-4 p-4 font-[family-name:var(--font-geist-sans)]">
       <MenuBar coins={coins} homeButton={true} />
       <PlayGame coins={coins} setCoins={setCoins} />
       <GameRules />
