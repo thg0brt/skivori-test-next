@@ -2,7 +2,11 @@ import Image from "next/image";
 import imgNotFound from "../../assets/img-not-found.png"
 import { useState, useEffect } from "react";
 
-export default function games({searchGame}){
+interface gameProp {
+    searchGame?: string
+}
+
+export default function games({searchGame}: gameProp){
     
     // useState for managing the json data.
     const [dataJson, setDataJson] = useState(null);

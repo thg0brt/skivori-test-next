@@ -1,11 +1,16 @@
 "use client";
 
-export default function searchBar({search, setSearch})  {
+interface searchBarProps{
+    search?: string,
+    setSearch?: React.Dispatch<React.SetStateAction<string>>;
+}
+
+export default function searchBar({search = "", setSearch}: searchBarProps)  {
 
     //Set new value to the search state variable when the game-bar input changes.
-    function changeSeach(e){
+    function changeSeach(e: React.ChangeEvent<HTMLInputElement>) {
         const val = e.target.value;
-        setSearch(val);
+        if (setSearch) setSearch(val);
     }
 
     return (

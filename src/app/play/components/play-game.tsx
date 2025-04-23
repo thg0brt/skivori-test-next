@@ -1,10 +1,15 @@
 
-import Svg from "./svg.js"
+import Svg from "./svg"
 import { useState, useEffect } from "react";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-export default function playGame({coins, setCoins}){
+ interface playGameProps {
+    coins?: number,
+    setCoins: React.Dispatch<React.SetStateAction<number>>;
+}
+
+export default function playGame({coins, setCoins}: playGameProps){
 
     //UseState for the game control variables.
     const [spin, setSpin] = useState(false); //defines whether the user spun the slot machine or not 
@@ -42,7 +47,7 @@ export default function playGame({coins, setCoins}){
         if(json != null){
             setMainRow(json[1]);
             
-            const result = json[0];
+            const result = Array.isArray(json) && typeof json[0] === 'number' ? json[0] : 0; 
 
             //defines the toast mensage
             if(result < 0){
@@ -80,11 +85,11 @@ export default function playGame({coins, setCoins}){
                     });
             }
 
-            const currentCoins = coins;
-            const newBalance   = currentCoins + (result)
+            const currentCoins = coins ? coins : 0;
+            const newBalance   = currentCoins + result
 
             setCoins(newBalance);
-            console.log(mainRow);
+            // console.log(mainRow);
         }
     }, [json]);
 
