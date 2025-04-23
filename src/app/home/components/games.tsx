@@ -6,10 +6,20 @@ interface gameProp {
     searchGame?: string
 }
 
+interface gameJson {
+    id: string,
+    slug: string,
+    title: string,
+    providerName: string,
+    thumb: {
+        url: string
+    }    
+}
+
 export default function Games({searchGame}: gameProp){
     
     // useState for managing the json data.
-    const [dataJson, setDataJson] = useState(null);
+    const [dataJson, setDataJson] = useState<gameJson[]>([]);
 
     //Request to the back-end REST API endpoint.
     const fetchGames = async () => {
