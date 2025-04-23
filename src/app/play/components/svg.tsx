@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react";
 
-export default function displaySvg({svgName}){
+interface displaySvgProps {
+    svgName: string
+}
+
+export default function displaySvg({svgName}: displaySvgProps){
 
     //UseState for the svgContent
     const [svgContent, setSvgContent] = useState("");

@@ -3,13 +3,23 @@ import { useState, useEffect } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+interface menuBarProps {
+    coins?: number,
+    homeButton: boolean
+}
+
+interface ConversionJson {
+    conversion_result: number;
+    conversion_rate: number;
+}
+
 //Menu-bar of the web-site, it its rendered by all routes.
-export default function menuBar({coins, homeButton}) {
+export default function menuBar({coins, homeButton}: menuBarProps) {
 
     //Configuration for the Convert Balance functionality
     const apiKey = "cb2de2d399468cc6b721fa53";
     const [convertActive, setConvertActive] = useState(false);
-    const [json, setJson] = useState(null);
+    const [json, setJson] = useState<ConversionJson | null>(null);
 
     //redirect to play page.
     function changeRoute(){
@@ -55,7 +65,7 @@ export default function menuBar({coins, homeButton}) {
         <div className="w-full lg:w-3/5 h-5">
             <div className="grid grid-rows-[40px_40px] items-center justify-items-center">
                 <h1 className="text-3xl font-bold text-center">Play Games!</h1>
-                {coins != undefined
+                {coins != undefined 
                 ? <h1 className="text-md text-center m-2">Coins Balance: {coins}</h1>
                 : ""
                 }
