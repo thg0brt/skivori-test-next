@@ -1,7 +1,7 @@
 
 import Svg from "./svg";
 
-export default function gameRules(){
+export default function GameRules(){
 
     return (
         <div className="w-full lg:w-3/5 h-35">

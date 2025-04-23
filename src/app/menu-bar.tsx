@@ -14,7 +14,7 @@ interface ConversionJson {
 }
 
 //Menu-bar of the web-site, it its rendered by all routes.
-export default function menuBar({coins, homeButton}: menuBarProps) {
+export default function MenuBar({coins, homeButton}: menuBarProps) {
 
     //Configuration for the Convert Balance functionality
     const apiKey = "cb2de2d399468cc6b721fa53";

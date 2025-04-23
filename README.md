@@ -24,4 +24,4 @@
 ## Use of ChatGPT as AI code editor/assistant.
  - Used it to help me update the game list using useState and useEffect.
  - Used it to create the homepage game banner.
- - Used it to help me create the svg.js component. I was having trouble figuring out how to import the SVG into the HTML.
+ - Used it to help me create the svg.tsx component. I was having trouble figuring out how to import the SVG into the HTML.

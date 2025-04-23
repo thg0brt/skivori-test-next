@@ -1,8 +1,8 @@
 import Image from "next/image";
-import GameBanner from "../../assets/game-banner.png"
+import GameBannerImg from "../../assets/game-banner.png"
 import { redirect } from 'next/navigation'
 
-export default function gameBanner() {
+export default function GameBanner() {
 
     //redirect to play page.
     function changeRoute(){
@@ -16,7 +16,7 @@ export default function gameBanner() {
                     id        = "banner"
                     className = "w-full rounded-xl lg:h-96"  
                     key       = "gamebannerid" 
-                    src       = {GameBanner} 
+                    src       = {GameBannerImg} 
                     width     = {1600} 
                     height    = {400} 
                     alt       = "Game banner" >

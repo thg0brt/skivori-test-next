@@ -6,7 +6,7 @@ interface gameProp {
     searchGame?: string
 }
 
-export default function games({searchGame}: gameProp){
+export default function Games({searchGame}: gameProp){
     
     // useState for managing the json data.
     const [dataJson, setDataJson] = useState(null);

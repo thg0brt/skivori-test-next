@@ -5,7 +5,7 @@ interface searchBarProps{
     setSearch?: React.Dispatch<React.SetStateAction<string>>;
 }
 
-export default function searchBar({search = "", setSearch}: searchBarProps)  {
+export default function SearchBar({search = "", setSearch}: searchBarProps)  {
 
     //Set new value to the search state variable when the game-bar input changes.
     function changeSeach(e: React.ChangeEvent<HTMLInputElement>) {

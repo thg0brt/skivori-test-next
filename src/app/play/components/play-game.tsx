@@ -9,7 +9,7 @@ import 'react-toastify/dist/ReactToastify.css';
     setCoins: React.Dispatch<React.SetStateAction<number>>;
 }
 
-export default function playGame({coins, setCoins}: playGameProps){
+export default function PlayGame({coins, setCoins}: playGameProps){
 
     //UseState for the game control variables.
     const [spin, setSpin] = useState(false); //defines whether the user spun the slot machine or not 

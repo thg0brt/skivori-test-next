@@ -4,7 +4,7 @@ interface displaySvgProps {
     svgName: string
 }
 
-export default function displaySvg({svgName}: displaySvgProps){
+export default function DisplaySvg({svgName}: displaySvgProps){
 
     //UseState for the svgContent
     const [svgContent, setSvgContent] = useState("");
