@@ -22,7 +22,7 @@ export default function PlayGame({coins, setCoins}: playGameProps){
 
     //POST request to the back-end Play REST API endpoint.
     const play = async () => {
-        const response = await fetch("https://skivori-test-nest.onrender.com/games/play", {
+        const response = await fetch(process.env.NEXT_PUBLIC_API_URL + "/games/play", {
             method: 'POST'
         });
         const data = await response.json();

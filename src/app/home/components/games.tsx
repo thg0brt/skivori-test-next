@@ -27,11 +27,11 @@ export default function Games({searchGame}: gameProp){
 
         //if searchGame is not empty, fetch the game based on the search-bar filter.
         if(searchGame != ""){
-            response = await fetch("https://skivori-test-nest.onrender.com/games/search-games/"+searchGame);
+            response = await fetch(process.env.NEXT_PUBLIC_API_URL+"/games/search-games/"+searchGame);
 
         //If searchGame is empty, fetch all games from the back-end REST API endpoint
         }else{
-            response = await fetch("https://skivori-test-nest.onrender.com/games/get-games");
+            response = await fetch(process.env.NEXT_PUBLIC_API_URL+"/games/get-games");
         }
 
         let json = null

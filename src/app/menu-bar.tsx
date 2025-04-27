@@ -2,6 +2,7 @@ import { redirect } from 'next/navigation'
 import { useState, useEffect } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import useStore from './store'; // Importando o hook da store
 
 interface menuBarProps {
     coins?: number,
@@ -17,7 +18,6 @@ interface ConversionJson {
 export default function MenuBar({coins, homeButton}: menuBarProps) {
 
     //Configuration for the Convert Balance functionality
-    const apiKey = "cb2de2d399468cc6b721fa53";
     const [convertActive, setConvertActive] = useState(false);
     const [json, setJson] = useState<ConversionJson | null>(null);
 
@@ -28,7 +28,7 @@ export default function MenuBar({coins, homeButton}: menuBarProps) {
 
     //Request to the ExchangeRate API endpoint.
     const exchangeRate = async () => {
-        const response = await fetch("https://v6.exchangerate-api.com/v6/"+apiKey+"/pair/EUR/BRL/"+coins);
+        const response = await fetch(process.env.NEXT_PUBLIC_EXCHANGERATE_URL + "/pair/EUR/BRL/"+coins);
         const data = await response.json();
         setJson(data);
     }
