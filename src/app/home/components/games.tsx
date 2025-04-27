@@ -1,6 +1,7 @@
 import Image from "next/image";
 import imgNotFound from "../../assets/img-not-found.png"
 import { useState, useEffect } from "react";
+import SkeletonCard from "../../components/skeleton"
 
 interface gameProp {
     searchGame?: string
@@ -19,7 +20,7 @@ interface gameJson {
 export default function Games({searchGame}: gameProp){
     
     // useState for managing the json data.
-    const [dataJson, setDataJson] = useState<gameJson[]>([]);
+    const [dataJson, setDataJson] = useState<gameJson[] | null>([]);
 
     //Request to the back-end REST API endpoint.
     const fetchGames = async () => {
@@ -88,7 +89,12 @@ export default function Games({searchGame}: gameProp){
                     </div>
                 </div>
             ))
-            :  <h1 className="text-center text-2xl font-bold">Loading game list</h1>
+            :  <div className="flex gap-4">
+                    <SkeletonCard />
+                    <SkeletonCard />
+                    <SkeletonCard />
+                    <SkeletonCard />
+                </div>
             }
         </div>
     );
