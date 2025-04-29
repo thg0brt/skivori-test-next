@@ -1,6 +1,7 @@
 "use client";
 
-import  MenuBar     from "../menu-bar"
+import  MenuBar     from "../header/menu-bar"
+import  Header     from "../header/header"
 import  GameBanner  from "./components/game-banner"
 import  SearchBar   from "./components/search-bar"
 import  Games       from "./components/games"
@@ -18,8 +19,9 @@ export default function Home() {
   }, [search]);
 
   return (
-    <div className="grid grid-rows-[30px_150px_350px_0px] lg:grid-rows-[30px_400px_450px_0px] items-center justify-items-center gap-4 p-4 font-[family-name:var(--font-geist-sans)]">
-      <MenuBar coins={undefined} homeButton={false}/>
+    <div className="min-h-screen grid grid-rows-[30px_150px_350px_0px] lg:grid-rows-[60px_400px_450px_0px] justify-items-center gap-4">
+
+      <Header username="Thiago Brito" />
       <GameBanner />
       <SearchBar search={search} setSearch={setSearch} />
       <Games searchGame={search} />

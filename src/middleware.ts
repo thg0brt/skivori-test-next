@@ -14,8 +14,6 @@ export default async function middleware(req: NextRequest) {
   // 3. get the cookie
   const cookie = req.cookies.get('session')?.value
 
-  // console.log(cookie);
-
   //4. redirect to login if the cookie is invalidate
   if(path == '/login' && cookie){
     return NextResponse.redirect(new URL('/home', req.url))
@@ -24,10 +22,7 @@ export default async function middleware(req: NextRequest) {
   }else if(!cookie) {
     return NextResponse.redirect(new URL('/login', req.url))
   }
-
-   console.log(cookie);
   
-
   // 5. Decrypt the session from the cookie
   const session = await decrypt(cookie)
  
@@ -35,8 +30,6 @@ export default async function middleware(req: NextRequest) {
   if (isProtectedRoute && !session.id) {
     return NextResponse.redirect(new URL('/login', req.nextUrl))
   }
- 
-  console.log("session", session)
 
   // 7. Redirect to /home if the user is authenticated
   if (session?.userId && !req.nextUrl.pathname.startsWith('/home')) {

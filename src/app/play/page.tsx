@@ -1,6 +1,6 @@
 "use client";
 
-import MenuBar from "../menu-bar";
+import MenuBar from "../header/menu-bar";
 import PlayGame from "./components/play-game"
 import GameRules from "./components/game-rules";
 
