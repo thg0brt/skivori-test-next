@@ -11,11 +11,11 @@
 #banner {
   max-width: 100% !important;
 }
-
+/* fix latter
 svg {
   width: 70px !important;
   height: 70px !important;
-}
+} */
 
 .ReelRow {
   border: solid rgb(136, 84, 173) !important;
