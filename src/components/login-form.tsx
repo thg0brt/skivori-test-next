@@ -9,11 +9,30 @@ import {
 } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import { useEffect, useState } from "react"
+import { Loader2 } from "lucide-react"
 
 export function LoginForm({
   className,
   ...props
 }: React.ComponentProps<"div">) {
+  const [isLoading, setIsLoading] = useState(false)
+
+  useEffect(()=> {
+    if(isLoading){
+      //Set a timeout of 60 seconds, then call the play method.
+      setTimeout(() => {
+
+        setIsLoading(false);
+      }, 60000);
+      
+  } 
+  }, [isLoading]);
+
+  function setLoading(){
+    setIsLoading(true);
+  }
+
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props}>
       <Card>
@@ -48,14 +67,21 @@ export function LoginForm({
                 <Input id="password" type="password" name="password" required />
               </div>
               <div className="flex flex-col gap-3">
-                <Button type="submit" className="w-full">
-                  Login
+                <Button onClick={setLoading} type="submit" className="w-full">
+                {isLoading ? (
+                  <>
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    Logging in..
+                  </>
+                ) : (
+                  "Login"
+                )}
                 </Button>
               </div>
             </div>
             <div className="mt-4 text-center text-sm">
               Don&apos;t have an account?{" "}
-              <a href="#" className="underline underline-offset-4">
+              <a href="/register" className="underline underline-offset-4">
               Create an account
               </a>
             </div>
