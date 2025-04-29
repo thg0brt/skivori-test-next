@@ -3,13 +3,10 @@ import Svg from "./svg"
 import { useState, useEffect } from "react";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { UserStore } from "@/store/user-store";
+export default function PlayGame(){
 
- interface playGameProps {
-    coins?: number,
-    setCoins: React.Dispatch<React.SetStateAction<number>>;
-}
-
-export default function PlayGame({coins, setCoins}: playGameProps){
+    const { balance, increaseBalance, decreaseBalance } = UserStore()
 
     //UseState for the game control variables.
     const [spin, setSpin] = useState(false); //defines whether the user spun the slot machine or not 
@@ -51,6 +48,7 @@ export default function PlayGame({coins, setCoins}: playGameProps){
 
             //defines the toast mensage
             if(result < 0){
+                decreaseBalance(result);
                 toast.error("Bad luck! You lost 1 coin.", {
                     position: "bottom-center",
                     autoClose: 3000,
@@ -62,6 +60,7 @@ export default function PlayGame({coins, setCoins}: playGameProps){
                     theme: "light",
                     });
             } else if (result < 15){
+                increaseBalance(result);
                 toast.success("Great! You won "+result+" coins.", {
                     position: "bottom-center",
                     autoClose: 3000,
@@ -73,6 +72,7 @@ export default function PlayGame({coins, setCoins}: playGameProps){
                     theme: "light",
                     });
             } else if (result >= 15){
+                increaseBalance(result);
                 toast.success("Big win! You won "+result+" coins.", {
                     position: "bottom-center",
                     autoClose: 3000,
@@ -84,18 +84,12 @@ export default function PlayGame({coins, setCoins}: playGameProps){
                     theme: "light",
                     });
             }
-
-            const currentCoins = coins ? coins : 0;
-            const newBalance   = currentCoins + result
-
-            setCoins(newBalance);
-            // console.log(mainRow);
         }
     }, [json]);
 
     //OnClick action to triggers the play request.
     function handleClick(){
-        if(coins == 0){
+        if(balance == 0){
             toast.error("Sorry, you don't have enought coins to spin the slot machine!", {
                 position: "bottom-center",
                 autoClose: 3000,

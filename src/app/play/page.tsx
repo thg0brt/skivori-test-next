@@ -1,21 +1,17 @@
 "use client";
 
-import MenuBar from "../header/menu-bar";
-import PlayGame from "./components/play-game"
+import  Header   from "../header/header"
+import PlayGame  from "./components/play-game"
 import GameRules from "./components/game-rules";
 
-import { useState } from "react";
 
 //Route for the play page.
 export default function Play() {
 
-  //UseState for the coins variable
-  const [coins, setCoins] = useState<number>(20);
-
   return (
-    <div className="grid grid-rows-[30px_450px_350px] lg:grid-rows-[30px_450px_340px] items-center justify-items-center gap-4 p-4 font-[family-name:var(--font-geist-sans)]">
-      <MenuBar coins={coins} homeButton={true} />
-      <PlayGame coins={coins} setCoins={setCoins} />
+    <div className="min-h-screen grid grid-rows-[30px_450px_350px] lg:grid-rows-[60px_450px_340px] justify-items-center gap-4">
+      <Header />
+      <PlayGame />
       <GameRules />
     </div>
   );

@@ -13,7 +13,7 @@ export default function DisplaySvg({svgName}: displaySvgProps){
     useEffect(() => {
         fetch(svgName +".svg")
         .then((response) => response.text())
-        .then((svg) => setSvgContent(svg));
+        .then((svg) => setSvgContent(svg.replace('<svg', '<svg class="fruits"')));
     }, [svgName]);
 
     return (

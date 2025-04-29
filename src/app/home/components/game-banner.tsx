@@ -10,28 +10,22 @@ export default function GameBanner() {
     }
 
     return (
-        <div className="w-full lg:w-3/5 h-30">
-            <div>
+        <div className="w-full lg:w-3/5 h-auto flex flex-col items-center gap-4">
                 <Image 
                     id        = "banner"
-                    className = "w-full rounded-xl lg:h-96"  
+                    className ="w-full rounded-xl lg:h-96"  
                     key       = "gamebannerid" 
                     src       = {GameBannerImg} 
                     width     = {1600} 
                     height    = {400} 
                     alt       = "Game banner" >
                 </Image>
-            </div>
-            <div className="grid grid-rows-[40px_40px] items-center justify-items-center">
-                <h1>You will start with 20 coins!</h1>
                 <input
                     defaultValue = "Play now!"
                     type         = "button"
                     onClick      = {changeRoute}
                     placeholder  = "Play now!"
-                    className    = "w-24 h-10 rounded-xl text-center bg-red-800 bottom-8 left-8 cursor-pointer">
-                </input>
-            </div>
+                     className="w-24 h-10 rounded-xl text-center bg-red-800 text-white cursor-pointer hover:bg-red-700 transition-colors duration-200" />
         </div>
     );
 }
