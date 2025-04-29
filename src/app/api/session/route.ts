@@ -1,9 +1,6 @@
-import { NextApiRequest } from 'next';
 import { NextResponse } from 'next/server'
 import { encrypt } from '@/app/lib/session'
-import { serialize } from 'cookie'
 
-// export default async function handler(req: NextApiRequest, res: NextApiResponse) {
 export async function POST(req: Request) {   
 
     const { user } = await req.json()
