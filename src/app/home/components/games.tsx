@@ -21,26 +21,33 @@ export default function Games({searchGame}: gameProp){
     
     // useState for managing the json data.
     const [dataJson, setDataJson] = useState<gameJson[] | null>([]);
+    const [loading, setLoading] = useState(true);
 
     //Request to the back-end REST API endpoint.
     const fetchGames = async () => {
-        let response = null
+        try {
+            let response = null
 
-        //if searchGame is not empty, fetch the game based on the search-bar filter.
-        if(searchGame != ""){
-            response = await fetch(process.env.NEXT_PUBLIC_API_URL+"/games/search-games/"+searchGame);
+            //if searchGame is not empty, fetch the game based on the search-bar filter.
+            if(searchGame != ""){
+                response = await fetch(process.env.NEXT_PUBLIC_API_URL+"/games/search-games/"+searchGame);
 
-        //If searchGame is empty, fetch all games from the back-end REST API endpoint
-        }else{
-            response = await fetch(process.env.NEXT_PUBLIC_API_URL+"/games/get-games");
+            //If searchGame is empty, fetch all games from the back-end REST API endpoint
+            }else{
+                response = await fetch(process.env.NEXT_PUBLIC_API_URL+"/games/get-games");
+            }
+
+            let json = null
+            if(response.ok){
+                json = await response.json();
+            }
+            
+            setDataJson(json);
+        }catch (error) {
+            console.error('Error: ', error);
+        } finally {
+            setLoading(false);
         }
-
-        let json = null
-        if(response.ok){
-            json = await response.json();
-        }
-        
-        setDataJson(json);
     }
 
     //UseEffect to monitor and call the fetchGames request when the searchGame props changes.
@@ -54,7 +61,7 @@ export default function Games({searchGame}: gameProp){
 
     return (
         <div className="w-full lg:w-3/5 h-60 grid grid-cols-2 sm:grid-cols-4 gap-x-4 gap-y-10 md:gap-x-4 md:gap-y-10">
-            {dataJson 
+            {!loading && dataJson != null
             ? dataJson.map((data) => (
                 <div key={data.id}>
                     <div className="h-14">
