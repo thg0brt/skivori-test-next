@@ -24,7 +24,7 @@ export async function POST(req: Request) {
     return response;
 }
 
-export async function GET(req: Request) {   
+export async function GET() {   
 
   const cookie = (await cookies()).get('session')?.value
 
