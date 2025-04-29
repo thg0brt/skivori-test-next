@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server'
-import { encrypt } from '@/app/lib/session'
+import { decrypt, encrypt } from '@/app/lib/session'
+import { cookies } from 'next/headers'
 
 export async function POST(req: Request) {   
 
@@ -21,4 +22,19 @@ export async function POST(req: Request) {
     })
     
     return response;
+}
+
+export async function GET(req: Request) {   
+
+  const cookie = (await cookies()).get('session')?.value
+
+  const user = cookie ? await decrypt(cookie) : null
+
+  const response = NextResponse.json({
+    message: 'Session cookie returned!',
+    session: user,
+  })
+
+  
+  return response;
 }
