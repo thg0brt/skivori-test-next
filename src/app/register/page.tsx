@@ -46,7 +46,7 @@ export default function RegisterPage() {
     setIsLoading(true)
 
     try {
-      const response = await fetch(process.env.NEXT_PUBLIC_API_URL+"/users/create", {
+      await fetch(process.env.NEXT_PUBLIC_API_URL+"/users/create", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -67,7 +67,7 @@ export default function RegisterPage() {
       // Redirect to login page after successful registration
       router.push("/login")
     } catch (error) {
-        toast("There was an error creating your account. Please try again.");
+        toast("Error:" + error);
     } finally {
       setIsLoading(false)
     }
