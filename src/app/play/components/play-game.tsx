@@ -48,7 +48,7 @@ export default function PlayGame(){
 
             //defines the toast mensage
             if(result < 0){
-                decreaseBalance(result);
+                decreaseBalance(1);
                 toast.error("Bad luck! You lost 1 coin.", {
                     position: "bottom-center",
                     autoClose: 3000,

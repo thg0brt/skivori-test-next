@@ -20,11 +20,10 @@ export function LoginForm({
 
   useEffect(()=> {
     if(isLoading){
-      //Set a timeout of 60 seconds, then call the play method.
       setTimeout(() => {
 
         setIsLoading(false);
-      }, 60000);
+      }, 5000);
       
   } 
   }, [isLoading]);

@@ -26,7 +26,7 @@ interface ConversionJson {
 }
 
 export default function Header() {
-  const { name, email, balance, isStoreSet, hasHydrated, setUser, setIsStoreSet, logout } = UserStore()
+  const { name, email, balance, logout } = UserStore()
 
   //Configuration for the Convert Balance functionality
   const [convertActive, setConvertActive] = useState(false);
@@ -35,33 +35,6 @@ export default function Header() {
   // Check if we are on the home page
   const pathname = usePathname();
   const isHomePage = pathname === "/" || pathname === "/home"
-
-  //method to fetch the session data stored in the cookies
-  const fetchCookie = async () => {
-    const response = await fetch('/api/session')
-
-    if(response.ok){
-      const { session } = await response.json();
-
-      setUser({
-        id: session.id,
-        name: session.name,
-        email: session.email,
-        balance: session.balance,
-      })
-
-      setIsStoreSet(true);
-    }
-  }
-
-  //UseEffect to trigger the fetch when the store is not set.
-  useEffect(() => {
-    if(hasHydrated && !isStoreSet){
-      
-      fetchCookie();
-    }
-    
-  }, [hasHydrated]);
 
 
   //Request to the ExchangeRate API endpoint.
@@ -123,12 +96,6 @@ export default function Header() {
           </div>
         )}
         <div className="flex items-center gap-4">
-          {/* <div className="flex items-center gap-2 bg-gray-700 px-3 py-1.5 rounded-full">
-            <Button variant="ghost" size={'default'} onClick={handleConvert} className="cursor-pointer">
-              <RefreshCw className="h-4 w-4 bg-gray-700" />
-              <span>Convert Balance</span>
-            </Button>
-          </div> */}
           <div className="flex items-center gap-2 bg-gray-700 px-3 py-1.5 rounded-full">
             <Button variant="ghost"  onClick={handleConvert} className="h-6 cursor-pointer">
               <RefreshCw className="h-4 w-4 bg-gray-700" />
