@@ -41,11 +41,12 @@ export default function RegisterPage() {
     },
   })
 
-  // Handle form submission
+  // Handle form submit
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsLoading(true)
 
     try {
+      //Send HTTP Request to create a new user
       await fetch(process.env.NEXT_PUBLIC_API_URL+"/users/create", {
         method: "POST",
         headers: {
@@ -58,11 +59,6 @@ export default function RegisterPage() {
           balance: 20
         }),
       })
-
-      // For demo purposes, we'll simulate a successful response
-      // In a real app, you would check the response status and handle accordingly
-
-      toast("You've successfully registered an account.")
 
       // Redirect to login page after successful registration
       router.push("/login")

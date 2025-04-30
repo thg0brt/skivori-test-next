@@ -37,6 +37,9 @@ export const UserStore = create<UserState>()(
         set({ balance: newBalance });
 
         try {
+
+          //HTTP request
+          //Updates the user balance in the database
           await fetch(process.env.NEXT_PUBLIC_API_URL + "/users/update/"+id, {
             method: "PUT",
             headers: {
@@ -55,6 +58,8 @@ export const UserStore = create<UserState>()(
         set({ balance: newBalance });
 
         try {
+          //HTTP request
+          //Updates the user balance in the database
           await fetch(process.env.NEXT_PUBLIC_API_URL + "/users/update/"+id, {
             method: "PUT",
             headers: {
@@ -67,6 +72,8 @@ export const UserStore = create<UserState>()(
         }
       },
       logout: () =>{
+
+        //delete the user-store information
         localStorage.removeItem('user-store')
         set({
           id: 0,

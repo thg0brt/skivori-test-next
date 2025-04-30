@@ -10,7 +10,7 @@ import { UserStore } from "@/store/user-store"
 
 export default function Page() {
 
-  const {isStoreSet, hasHydrated, setUser, setIsStoreSet } = UserStore()
+  const {setUser, setIsStoreSet } = UserStore()
 
   //Attemp to log in when the login button is clicked.
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
