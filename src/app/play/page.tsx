@@ -9,7 +9,7 @@ import GameRules from "./components/game-rules";
 export default function Play() {
 
   return (
-    <div className="min-h-screen grid grid-rows-[30px_450px_350px] lg:grid-rows-[60px_450px_340px] justify-items-center gap-4">
+    <div className="min-h-screen grid grid-rows-[150px_450px_350px] lg:grid-rows-[60px_450px_340px] justify-items-center gap-4">
       <Header />
       <PlayGame />
       <GameRules />

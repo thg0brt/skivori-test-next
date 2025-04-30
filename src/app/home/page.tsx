@@ -18,7 +18,7 @@ export default function Home() {
   }, [search]);
 
   return (
-    <div className="min-h-screen grid grid-rows-[30px_150px_350px_0px] lg:grid-rows-[60px_450px_70px] justify-items-center gap-4">
+    <div className="min-h-screen grid grid-rows-[150px_330px_70px] lg:grid-rows-[60px_450px_70px] justify-items-center gap-4">
       <Header />
       <GameBanner />
       <SearchBar search={search} setSearch={setSearch} />
